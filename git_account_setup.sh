@@ -46,6 +46,12 @@ echo
 
 # --- Step 5: Verify Configuration ---
 echo "--- Verifying Setup ---"
+
+eval "$(ssh-agent -s)"
+ssh-add $KEY_PATH
+
+ssh -T git@github.com
+
 echo "Your current global Git configuration is:"
 git config --global --list
 echo
